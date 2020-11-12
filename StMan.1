@@ -1,0 +1,60 @@
+studentdict = {}
+cont = 1
+while(cont):
+	print("-- Select operations:\n 1.Add new students \n 2. View student details\n 3. Search\n 4. Update\n 5.Delete\n")
+	a=int(input("--Enter your choice--"))
+	
+	if a==1:
+		rl=int(input("Enter student roll number - "))
+		if rl in studentdict.keys():
+			print("-- Roll number already exists--")
+		else:
+			nm=input("Enter student name -")
+			studentdict[rl]=nm
+
+	elif a == 2:
+		print("{:<10} {:<10}".format('Roll No', 'Name'))
+		for key , value in studentdict.items():
+			rollNo,name= key,value
+			print("{:<10} {:<10}".format(rollNo,name))
+
+	elif a == 3:
+		searchrl=int(input("Enter Roll number to search -"))
+		if searchrl in studentdict.keys():
+			print ("Roll number already exists")
+			print("{:<10} {:<10}".format('Roll No', 'Name'))
+			rollNo,name= searchrl,studentdict[searchrl]
+			print("{:<10} {:<10}".format(rollNo,name))
+		else:
+			print("Roll No. doesnt exist")
+
+	elif a == 4:
+		delrl=int(input("Enter roll no. you want to Update -"))
+
+		if delrl in studentdict.keys():
+			newname=input("Enter name to be Updated -")
+			studentdict[delrl]=newname
+			print("-- Name has been Updated--")
+			print("{:<10} {:<10}".format('Roll No', 'Name'))
+			for jey, value in studentdict.items():
+				rollNo,name = key,value
+				print("{:<10} {:<10}".format(rollNo,name))
+		else:
+			print("--Roll no. does not exist--")
+
+	elif a == 5:
+		delrl=int(input("-- Enter roll no. to delete --"))
+		if delrl in studentdict.keys():
+			del studentdict[delrl]
+			print("-- Roll no. is deleted --")
+			print("Updated database")
+			print("{:<10} {:<10}".format('Roll No', 'Name'))
+			for key,value in studentdict.items():
+				rollNo,name= key,value
+				print("{:<10} {:<10}".format(rollNo,name))
+			else:
+				print("Roll no. does not exist")
+
+	elif a == 6:
+		cont=0
+		break
